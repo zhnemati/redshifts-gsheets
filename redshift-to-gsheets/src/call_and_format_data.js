@@ -7,7 +7,7 @@ AWS.init(secretkey, accesskey);
  
   var resultJson =  AWS.request(
     	"secretsmanager",
-    	"me-south-1",
+    	"<AWS REGION>",
     	'secretsmanager.GetSecretValue',
     	{"Version": "997cd326-0af7-4a10-bc1d-026645ea49e9"},
     	method='POST',
@@ -24,10 +24,10 @@ AWS.init(secretkey, accesskey);
 
 }
  function describe(id) {
-  var secrets=runGetSecretValue_("prod/appscript/redshifttogsheets")
+  var secrets=runGetSecretValue_("<AWS SECRET NAME WITH CREDENTIALS FOR REDSHIFT CLUSTER>")
   var resultJson = AWS.request(
     	"redshift-data",
-    	"me-south-1",
+    	"<AWS REGION>",
     	'RedshiftData.DescribeStatement',
     	{"Version": " "},
     	method='POST',
@@ -47,10 +47,10 @@ AWS.init(secretkey, accesskey);
   return JSON.parse(resultJson)
 } 
   function runExecuteStatement_(sql) {
-  var secrets=runGetSecretValue_("prod/appscript/redshifttogsheets")
+  var secrets=runGetSecretValue_("<AWS SECRET NAME WITH CREDENTIALS FOR REDSHIFT CLUSTER>")
   var resultJson =  AWS.request(
     	"redshift-data",
-    	"me-south-1",
+    	"<AWS REGION>",
     	'RedshiftData.ExecuteStatement',
     	{"Version": "2.2.47"},
     	method='POST',
@@ -75,7 +75,7 @@ AWS.init(secretkey, accesskey);
  
   var resultJson =  AWS.request(
     	"redshift-data",
-    	"me-south-1",
+    	"<AWS REGION>",
     	'RedshiftData.GetStatementResult',
     	{"Version": "2.2.47"},
     	method='POST',
@@ -93,7 +93,7 @@ else
     Logger.log("Token passed is " + Token)
     var resultJson =  AWS.request(
     	"redshift-data",
-    	"me-south-1",
+    	"<AWS REGION>",
     	'RedshiftData.GetStatementResult',
     	{"Version": "2.2.47"},
     	method='POST',
